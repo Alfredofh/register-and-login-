@@ -13,7 +13,17 @@
 <body>
     <?php require 'partials/header.php' ?>
 
-    <h1>Sign Up</h1>
+    <h1>SignUp</h1>
+    <span>or <a href="login.php">Login</a></span>
+
+    <form action="signup.php" method="POST">
+        <input name="email" type="text" placeholder="Enter your email">
+        <input name="password" type="password" placeholder="Enter your Password">
+        <input name="confirm_password" type="password" placeholder="Confirm Password">
+        <input type="submit" value="Submit">
+    </form>
+
+    </form>
 </body>
 
 </html>

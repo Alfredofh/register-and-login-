@@ -1,3 +1,4 @@
+<!--  -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +13,8 @@
 
 <body>
     <?php require 'partials/header.php' ?>
+    <span>or <a href="signup.php">SignUp</a></span>
+
     <form action="login.php" method="POST">
         <input name="email" type="text" placeholder="Enter your email">
         <input name="password" type="password" placeholder="Enter your Password">
