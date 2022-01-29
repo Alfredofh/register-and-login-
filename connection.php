@@ -1,12 +1,11 @@
 <?php
-
 $server = 'localhost';
 $username = 'root';
-$database = 'login';
 $password = '';
+$database = 'login';
 
 try {
-    $conn = new PDO("mysql:host=$server; dbname=$database; $usermane, $password");
+    $conn = new PDO("mysql:host=$server;dbname=$database;", $username, $password);
 } catch (PDOException $e) {
-    die('Connection failed:' . $e->getMessage());
+    die('Connection Failed: ' . $e->getMessage());
 }
