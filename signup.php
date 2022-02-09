@@ -1,4 +1,19 @@
-<?php require 'connection.php' ?>
+<?php require 'connection.php';
+
+$message = '';
+/* compruebo los campos */
+if (!empty($_POST['email']) && !empty($_POST['password'])) {
+    /* Sentencia SQL */
+    $sql = "INSERT INTO users (email, password) VALUES (:email, :password) ";
+    $stmt = $conn->prepare($sql);
+    //vinculamos los parámetros 
+    $stmt->bindParam(':email', $_POST['email']);
+    //ofuscamos pass
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $stmt->bindParam(':password', $password);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
