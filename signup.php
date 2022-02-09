@@ -11,6 +11,12 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
     //ofuscamos pass
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $stmt->bindParam(':password', $password);
+
+    if ($stmt->execute()) {
+        $message = 'Successfully created new user';
+    } else {
+        $message = 'Sorry there must have been an issue creating your account';
+    }
 }
 
 ?>
@@ -28,6 +34,10 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 
 <body>
     <?php require 'partials/header.php' ?>
+
+    <?php if (!empty($message)) : ?>
+    <p> <?= $message ?></p>
+    <?php endif; ?>
 
     <h1>SignUp</h1>
     <span>or <a href="login.php">Login</a></span>

@@ -1,4 +1,33 @@
-<!--  -->
+<?php require 'connection.php';
+
+session_start();
+//comprobamos los campos y
+if (!empty($_POST['email']) && !empty($_POST['password'])) {
+    // preparamos la query 
+    $records = $conn->prepare('SELECT id, email, password FROM users WHERE email=:email');
+    //creamos el parametro :email
+    $records->bindParam('email', $_POST['email']);
+    //ejecutamos la consulta
+    $records->execute();
+    //obtenemos los resultados
+    $results = $records->fetch(PDO::FETCH_ASSOC);
+
+    //manejamos los datos
+    $message = '';
+    //comprobamos si la contraseña que está imtroduciendo, es la misma que tenemos en la BD
+    if ($results > 0 && password_verify($_POST['password'], $results['password'])) {
+        //iniciamos sesion
+        $_SESSION['user_id'] = $results['id'];
+        //redirecionamos
+        header('Location: home.php ');
+    } else {
+        $message = "Usuario o contraseña incorrectos";
+    }
+};
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
