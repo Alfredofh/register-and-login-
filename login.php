@@ -19,7 +19,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
         //iniciamos sesion
         $_SESSION['user_id'] = $results['id'];
         //redirecionamos
-        header('Location: home.php ');
+        header('Location: login.php ');
     } else {
         $message = "Usuario o contraseña incorrectos";
     }
